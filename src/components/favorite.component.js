@@ -13,9 +13,9 @@ export class FavoriteComponent extends Component {
     this.$el.addEventListener('click', linkClickHandler.bind(this));
   }
 
-  async onShow() {
+  onShow() {
     const favorites = JSON.parse(localStorage.getItem('favorites'));
-    const html = await renderList(favorites);
+    const html = renderList(favorites);
     this.$el.insertAdjacentHTML('afterbegin', html);
   }
 
@@ -33,25 +33,18 @@ async function linkClickHandler(event) {
   this.$el.innerHTML = '';
 
   this.loader.show();
-  const post = await apiService.fetchPostById(postId);
-  console.log(post);
+  const post = await apiService.fetchPosts(postId);
   this.loader.hide();
   this.$el.insertAdjacentHTML('afterbegin', renderPost(post, { withButton: false }));
 }
 
-async function renderList(list = []) {
-
+function renderList(list = []) {
   if (list && list.length) {
-    let result = '<ul>';
-    for (let id of list) {
-      let post = await apiService.fetchPostById(id);
-      let title = post.title;
-      result +=
-        `
-        <li><a href="#" class="js-link" data-id="${id}">${title}</a></li>
+    return `
+        <ul>
+        ${list.map(i => `<li><a href="#" class="js-link" data-id="${i.id}">${i.title}</a></li>`).join(' ')}
+        </ul>
         `;
-    }
-    return result + '</ul>';
   }
 
   return `<p class="center">Вы пока ничего не добавили</p>`;

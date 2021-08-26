@@ -14,30 +14,25 @@ class ApiService {
       console.error(error);
     }
   }
-  async fetchPosts() {
+  async fetchPosts(id = '') {
     try {
-      const request = new Request(`${this.url}/posts.json`, {
-        method: 'get'
-      });
+      // const request = new Request(`${this.url}/posts${id
+      //   ? `/${id}`
+      //   : ''}.json`, {
+      //   method: 'get'
+      // });
+      const request = id
+        ? new Request(`${this.url}/posts/${id}.json`, {
+          method: 'get'
+        })
+        : new Request(`${this.url}/posts.json`, {
+          method: 'get'
+        });
       return useRequest(request);
     } catch (error) {
       console.error(error);
     }
   }
-
-  async fetchPostById(id) {
-    try {
-      const request = new Request(`${this.url}/posts/${id}.json`, {
-        method: 'get'
-      });
-
-      return useRequest(request);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-
 }
 
 async function useRequest(request) {
