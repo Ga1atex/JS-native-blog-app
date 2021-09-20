@@ -22,6 +22,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.html$/,
+        loader: "raw-loader"
+      },
+      {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
@@ -31,6 +35,7 @@ module.exports = {
           }
         }
       }
+
     ]
   }
 };

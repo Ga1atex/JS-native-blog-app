@@ -4,7 +4,7 @@ import { CreateComponent } from './components/create.component';
 import { PostsComponent } from './components/posts.component';
 import { FavoriteComponent } from './components/favorite.component';
 import { LoaderComponent } from './components/loader.component';
-
+require('./index.html');
 new HeaderComponent('header');
 
 const navigation = new NavigationComponent('navigation');
