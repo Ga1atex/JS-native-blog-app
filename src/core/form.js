@@ -25,7 +25,6 @@ export class Form {
 
     Object.keys(this.controls).forEach(control => {
       const validators = this.controls[control];
-
       let isValid = true;
       validators.forEach(validator => {
         isValid = validator(this.form[control].value) && isValid;

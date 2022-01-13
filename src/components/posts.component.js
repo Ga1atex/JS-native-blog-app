@@ -22,7 +22,7 @@ export class PostsComponent extends Component {
     this.$el.insertAdjacentHTML('afterbegin', html.join(' '));
   }
 
-  onHide() {
+  onHide() { // remove all posts
     this.$el.innerHTML = '';
   }
 }
@@ -37,11 +37,11 @@ function buttonHandler(event) {
   let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   const candidate = favorites.find(p => p.id === id);
 
-  if (candidate) {
+  if (candidate) { // when deleting
     $el.textContent = 'Сохранить';
     $el.classList.add('button-primary');
     $el.classList.remove('button-danger');
-    favorites = favorites.filter(post => post.id !== id);
+    favorites = favorites.filter(post => post.id !== id); // delete e.target id from localStorage
   } else {
     $el.classList.remove('button-primary');
     $el.classList.add('button-danger');

@@ -1,3 +1,4 @@
+// Tabs
 import { Component } from '../core/component';
 
 export class NavigationComponent extends Component {

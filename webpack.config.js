@@ -18,7 +18,6 @@ module.exports = {
   resolve: {
     extensions: ['.js']
   },
-
   module: {
     rules: [
       {
@@ -35,7 +34,6 @@ module.exports = {
           }
         }
       }
-
     ]
   }
 };

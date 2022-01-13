@@ -4,7 +4,7 @@ export class Validators {
   }
 
   static minLength(length) {
-    return value => {
+    return value => {  //closure (замыкание)
       return value.length >= length;
     };
   }
